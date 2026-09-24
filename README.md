@@ -2,9 +2,9 @@
 
 **AI-assisted prospecting and outreach for sales teams, job seekers, and recruiters.**
 
-Scout researches and ranks the companies worth contacting. **You decide who moves forward.** Chase drafts outreach, helps manage replies, and supports follow-up without removing the human approval step.
+Scout researches and ranks opportunities. **You decide who moves forward.** Chase helps turn approved opportunities into personalized outreach and follow-up.
 
-[Website](https://scoutchase.com) · **Status:** Working prototype · **Source:** Private
+[Website](https://scoutchase.com) · **Status:** Working prototype · **Source:** Private application repo
 
 ![ScoutChase dashboard](images/screens/dashboard.png)
 
@@ -12,31 +12,35 @@ Scout researches and ranks the companies worth contacting. **You decide who move
 
 ## What is ScoutChase?
 
-ScoutChase is a working product prototype built around two AI-assisted agents and one deliberate human decision point.
+ScoutChase is a working full-stack product prototype built around two AI-assisted agents and one deliberate human approval boundary.
 
-Most prospecting tools push users toward one of two bad extremes:
+Most prospecting tools tend toward one of two extremes:
 
-- hand over a huge list and make the user do the research manually, or
+- give the user a huge list and leave them to research it manually, or
 - automate outreach at volume and risk turning prospecting into spam.
 
 ScoutChase takes a different approach.
 
-It starts with a **playbook** describing what the user sells or is looking for, who is a good fit, what signals matter, and what claims are allowed. Scout uses that context to research and rank opportunities. The user approves the ones worth pursuing. Chase then helps draft and manage the outreach.
+The user defines a **playbook** describing what they sell or what they are looking for, who is a good fit, what signals matter, and how outreach should be handled.
+
+**Scout** uses that context to discover, research, and rank opportunities.  
+**You** decide which opportunities are worth pursuing.  
+**Chase** helps draft outreach, manage follow-up, and move approved prospects toward a real conversation.
 
 ```text
 PLAYBOOK
    ↓
-SCOUT SEARCH
+SCOUT
+Discover · Research · Rank
    ↓
-RANKED RESULTS + REASONS
+MATCHES + REASONS
    ↓
-YOUR APPROVAL
+HUMAN APPROVAL
    ↓
-CHASE DRAFTS
+CHASE
+Draft · Follow up · Assist
    ↓
-OUTREACH
-   ↓
-REPLIES
+CONVERSATION
    ↓
 QUALIFIED / HANDOFF
 ```
@@ -47,19 +51,19 @@ QUALIFIED / HANDOFF
 
 ## The core idea
 
-**Do the research before anyone gets contacted, and keep a person in charge of the decisions that matter.**
+**Use software to do more of the repetitive research and drafting without handing over the decisions that affect reputation, relationships, or trust.**
 
 ### Scout
 
-Scout is the research and prospecting agent. It interprets the playbook, searches available sources, evaluates fit, ranks matches, and explains *why* each company or opportunity is worth attention.
+Scout is the discovery and research side of the product. It interprets the playbook, searches available sources, evaluates fit, ranks opportunities, and explains why each match deserves attention.
 
 ### You
 
-The user controls the approval boundary. Nothing moves from Scout to Chase until it is explicitly approved.
+The user controls the approval boundary. A prospect does not move from Scout to Chase simply because an algorithm gave it a high score.
 
 ### Chase
 
-Chase is the outreach and follow-up agent. It drafts first messages, supports review, tracks outreach, suggests replies, and pauses when a conversation needs human judgment.
+Chase is the outreach and follow-up side. It prepares personalized drafts, supports review, helps organize conversations, suggests replies, and keeps the next action visible.
 
 ![AI does the research and drafting. You make the calls.](images/diagrams/ai-and-you.png)
 
@@ -69,9 +73,9 @@ Chase is the outreach and follow-up agent. It drafts first messages, supports re
 
 ### 1. Build the playbook
 
-Onboarding captures the context both agents need: what you sell or are looking for, who a good fit is, common problems, geography, positioning, objections, and communication boundaries.
+Onboarding captures the context Scout and Chase need: the offer or objective, target audience, geography, useful signals, positioning, objections, outreach rules, and communication boundaries.
 
-Scout uses the playbook to judge fit. Chase uses it to draft messages and stay within the user's rules.
+Scout uses the playbook to evaluate opportunities. Chase uses the same context when preparing outreach.
 
 ![ScoutChase onboarding](images/screens/onboarding.png)
 
@@ -79,17 +83,19 @@ Scout uses the playbook to judge fit. Chase uses it to draft messages and stay w
 
 ### 2. Send Scout out
 
-The user describes who Scout should look for in plain language and can narrow the search with simple filters such as company size, geography, and result count.
+The user describes what Scout should look for in plain language and can narrow the search using filters such as geography, company size, keywords, and result count.
 
 ![Scout search](images/screens/scout-search.png)
 
 ### 3. Review ranked results
 
-Scout returns a short list rather than an undifferentiated database dump. Results are grouped by fit and include written reasons so the user can understand the recommendation instead of trusting a mystery score.
+Scout returns a prioritized set of opportunities rather than an undifferentiated database dump.
+
+Each result includes the reasoning behind the match so the user can see **why** it was surfaced instead of trusting a mystery score.
 
 ![Scout ranked results](images/screens/scout-results.png)
 
-Opening a company shows the evidence behind the match, the relevant signals, people connected to the opportunity, and the first message Chase would draft.
+Opening a company shows the evidence behind the match, relevant signals, associated contacts, and the outreach direction Chase can use.
 
 ![Company detail](images/screens/company-detail.png)
 
@@ -97,67 +103,88 @@ Opening a company shows the evidence behind the match, the relevant signals, peo
 
 ## Scout → approval → Chase
 
-Approval is a first-class part of the workflow, not a hidden checkbox.
+Approval is part of the product architecture, not an afterthought.
 
-When companies are handed from Scout to Chase, the user can see how many companies and contacts are included and choose whether each first message must be reviewed before anything is sent.
+Selected opportunities are handed from Scout to Chase in an explicit step. The user can review what is being moved forward before outreach work begins.
 
 ![Scout to Chase handoff](images/screens/handoff.png)
 
-Chase then creates a review queue. Drafts can be reviewed, edited, rewritten, approved, or skipped. A skipped company is not contacted.
+Chase creates a review queue where drafts can be inspected, edited, rewritten, approved, or skipped.
 
 ![Chase review queue](images/screens/chase-review-queue.png)
 
-Approved prospects then move through the working pipeline as outreach progresses.
+Approved prospects can then move through the working pipeline as outreach progresses.
 
 ![Prospect pipeline](images/screens/prospects.png)
 
-The dashboard keeps the two agents visible as separate responsibilities: Scout finds opportunities; Chase manages approved outreach and conversations.
+The dashboard keeps Scout and Chase visible as separate responsibilities: **Scout finds and evaluates opportunities; Chase works the approved ones.**
 
 ![ScoutChase dashboard](images/screens/dashboard.png)
 
 ---
 
-## One workflow, three playbooks
+## One workflow, three use cases
 
-The same **Scout → approve → Chase** loop can support different goals. What changes is the playbook and the target of the research.
+ScoutChase is built around a reusable workflow. What changes is the playbook, the source data, and who the user ultimately wants to reach.
 
 | Use case | Scout looks for | Chase supports |
 |---|---|---|
-| **Sales** | Companies that fit the product and show useful buying signals | Outreach to the relevant decision-maker |
-| **Job search** | Roles and companies worth pursuing from job and ATS sources | Outreach to the hiring team |
-| **Recruiting** | Companies that are hiring and relevant search opportunities | Outreach around the active search |
+| **Sales prospecting** | Companies that match the ideal customer profile and show useful signals | Personalized outreach to relevant decision-makers |
+| **Job search** | Open roles and companies that match the user's skills, goals, and constraints | Outreach to hiring teams and relevant contacts |
+| **Recruiting** | Hiring companies, searches, and candidate-related opportunities | Personalized recruiting outreach and follow-up |
 
 ![One workflow, three playbooks](images/diagrams/use-cases.png)
 
 ---
 
-## How AI fits
+## How AI and external services fit
 
-ScoutChase is intentionally not designed around “let the AI do everything.”
+ScoutChase does not treat an LLM as the entire product. The AI layer sits inside a broader workflow that also handles research, enrichment, persistence, approvals, and background execution.
 
-AI handles the repetitive work where it is useful:
+### OpenAI API
 
-- interpreting the playbook
-- researching opportunities
-- matching and ranking
-- explaining fit
-- drafting outreach
-- drafting suggested replies
+Used for AI-assisted interpretation, reasoning, ranking, explanation, personalization, and draft generation within the Scout and Chase workflows.
 
-The user keeps control over the decisions that carry reputational or business risk:
+### Firecrawl
 
-- who gets contacted
-- what gets sent
-- what claims the product is allowed to make
-- when to take over a conversation
+Used for web research and extraction so Scout can work with information from company websites and other public web sources instead of relying only on static records.
 
-That human-in-the-loop boundary is part of the product design, not a temporary limitation.
+### Prospeo
+
+Used for contact enrichment, helping connect approved companies with relevant people and available contact data.
+
+### Trigger.dev
+
+Used for background and long-running workflow execution so research, enrichment, and agent tasks do not have to depend on a single browser request remaining open.
+
+The human approval layer sits between research and outreach.
+
+```text
+PLAYBOOK
+   ↓
+SCOUT
+   ├── Firecrawl → web research / extraction
+   ├── OpenAI API → interpretation / ranking / reasoning
+   └── Prospeo → contact enrichment
+   ↓
+RANKED OPPORTUNITIES
+   ↓
+HUMAN APPROVAL
+   ↓
+CHASE
+   └── OpenAI API → outreach / reply assistance
+   ↓
+FOLLOW-UP WORKFLOWS
+   └── Trigger.dev → background execution
+   ↓
+POSTGRESQL
+```
 
 ---
 
 ## Product architecture
 
-ScoutChase is a **working prototype with a real application layer, authentication, persistent data, workflow logic, and automated testing**.
+ScoutChase is a **working prototype with a real application layer, authentication, persistent data, external providers, background workflows, AI-assisted reasoning, and automated testing**.
 
 | Layer | Technology |
 |---|---|
@@ -166,66 +193,106 @@ ScoutChase is a **working prototype with a real application layer, authenticatio
 | Authentication | Clerk |
 | Database | PostgreSQL |
 | ORM | Prisma |
+| AI / reasoning | OpenAI API |
+| Background workflows | Trigger.dev |
+| Web research / extraction | Firecrawl |
+| Contact enrichment | Prospeo |
 | Testing | Vitest · Playwright |
 | Deployment | Docker configuration |
 
 ![Product architecture](images/diagrams/architecture.png)
 
-The current prototype includes:
+### Current application capabilities
 
-- external-source and ATS/job-source adapters
-- structured matching and ranking logic
 - Client Prospecting and Job Search playbooks
+- plain-language Scout searches
+- company and opportunity discovery workflows
+- ATS and structured job-source adapters
+- structured matching, filtering, and ranking logic
+- evidence and fit explanations
 - company and contact workflows
-- outreach draft generation
+- Firecrawl-backed web research
+- Prospeo contact enrichment
+- OpenAI-assisted analysis and draft generation
 - explicit Scout → Chase handoff
-- review queues
-- inbox and suggested-reply workflows
-- qualification and pipeline progression
-- tested Scout → Chase workflows
+- Chase review queue
+- suggested-reply and qualification workflows
+- prospect pipeline progression
+- background workflow support with Trigger.dev
+- authenticated, persistent application data
+- automated unit and end-to-end testing
+
+---
+
+## Job-source discovery
+
+The Job Search workflow is designed to do more than keyword-match a generic jobs feed.
+
+The prototype includes adapters for structured job sources and ATS platforms, including:
+
+- Greenhouse
+- Lever
+- Ashby
+- structured / JSON-LD job data
+
+Matching logic can evaluate factors such as role family, seniority, work arrangement, geography, and compensation before an opportunity is surfaced.
+
+The longer-term direction is broader **company-first discovery**: finding organizations worth approaching even when the right role has not been publicly advertised yet.
 
 ---
 
 ## What works today
 
-ScoutChase is not just a UI concept. The current prototype demonstrates the core product loop end to end:
+ScoutChase is not only a UI concept. The current prototype demonstrates the core product loop:
 
 1. define a playbook
 2. run a Scout search
-3. receive ranked results with reasons
-4. inspect the company and signals
-5. approve selected opportunities
-6. hand approved companies to Chase
-7. review outreach drafts
-8. track prospects and conversations through the workflow
+3. research and evaluate opportunities
+4. receive ranked results with reasons
+5. inspect companies, evidence, and contacts
+6. approve selected opportunities
+7. hand them to Chase
+8. review personalized outreach drafts
+9. track prospects through the workflow
 
-The screenshots in this repository use fictional demo data and are intended to show the product experience without exposing private customer or prospect information.
+The application also has a real backend, authentication, PostgreSQL persistence, external provider integrations, background workflow support, and automated tests.
+
+The screenshots in this repository use fictional demo data so the product can be shown without exposing real prospect or customer information.
 
 ---
 
 ## What comes next
 
-The next development areas are focused on making the prototype more useful in real-world workflows rather than simply adding more UI.
+The next development work is focused on making the existing workflow more useful and production-ready rather than simply adding more screens.
 
 - broader company-first discovery
-- stronger decision-maker enrichment
-- deeper external integrations
-- production email and outreach infrastructure
-- stronger production multi-tenant controls
-- operational monitoring and security hardening
+- stronger decision-maker discovery and enrichment
+- deeper research and provider integrations
+- expanded Chase conversation workflows
+- production outreach infrastructure
+- stronger multi-tenant controls
+- observability, rate limiting, and operational hardening
 - billing and account administration
 
 ---
 
 ## Why I built ScoutChase
 
-I built ScoutChase because prospecting and job searching both suffer from the same basic problem: there is too much information, too little context, and too much repetitive manual work.
+I built ScoutChase because sales prospecting and job searching share the same underlying problem: **too much information, too little context, and too much repetitive manual work.**
 
-The interesting part is not generating another list. It is deciding **which opportunities are actually worth pursuing, why they fit, who should be contacted, and what the next action should be**.
+The interesting problem is not generating another list.
 
-ScoutChase is my attempt to use AI for the research, filtering, organization, and drafting while keeping the human responsible for judgment, communication, and relationships.
+It is determining:
 
-It also gave me a practical way to explore product design, full-stack application architecture, AI-assisted workflows, external-source integrations, testing, and human-in-the-loop automation in one system.
+- which opportunities are actually worth pursuing
+- why they fit
+- which signals support that conclusion
+- who the relevant person is
+- what the next action should be
+
+ScoutChase is my attempt to use AI and automation for the repetitive research, filtering, enrichment, organization, and drafting while keeping the human responsible for judgment and communication.
+
+It also gave me a practical project for exploring full-stack product development, agent-style workflows, third-party APIs, asynchronous jobs, data modeling, authentication, testing, and human-in-the-loop product design in one system.
 
 ---
 
@@ -233,7 +300,7 @@ It also gave me a practical way to explore product design, full-stack applicatio
 
 **ScoutChase is an actively developed working prototype and portfolio case study.**
 
-It is suitable for demonstrating the product architecture and workflow, but it should not be interpreted as a production SaaS service yet.
+The current build demonstrates the core Scout → approval → Chase workflow with real application logic and provider integrations. It is not being presented as a finished production SaaS product.
 
 This public repository contains the case study and screenshots. The application source code, configuration, credentials, and private implementation details remain in a private repository.
 
